@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Report → Fix · Acadza faculty console</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><span class="logo">⟲</span><div><b>Report → Fix</b><small>Acadza faculty console</small></div></div>
+  <div class="stats" id="stats" aria-live="polite"></div>
+  <div class="tools">
+    <input id="reviewer" class="reviewer" placeholder="Your name (for audit)" aria-label="Reviewer name">
+    <button class="ghost" id="btn-sweep" title="Defects nobody reported">Sweep <span id="sweep-n" class="pill"></span></button>
+    <button class="ghost" id="btn-audit">Audit <span id="audit-n" class="pill"></span></button>
+    <button class="ghost icon" id="btn-theme" title="Toggle light / dark" aria-label="Toggle theme">◐</button>
+    <button class="ghost icon" id="btn-help" title="Keyboard shortcuts" aria-label="Help">?</button>
+  </div>
+</header>
+<div class="shell">
+  <aside class="queue" id="queue" aria-label="Review queue"></aside>
+  <main class="detail" id="detail" tabindex="-1"></main>
+</div>
+<div id="drawer" class="drawer" hidden></div>
+<div id="toast" class="toast" hidden></div>
+<noscript>This console needs JavaScript.</noscript>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

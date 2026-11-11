@@ -1,0 +1,132 @@
+[
+ {
+  "questionId": "66fe9dbe22132e5a70a3e579",
+  "index": 10,
+  "kind": "solution_fix",
+  "severity": "high",
+  "text": "Stored solution says 'Insulin and glucagon work synergistically', but option B of the same question lists them as an antagonistic pair (they are antagonists). A student reading the solution learns the opposite fact.",
+  "where": "solution",
+  "chapter": "Chemical Coordination and Integration",
+  "subject": "Zoology"
+ },
+ {
+  "questionId": "695ee00b88d7701e561aabc5",
+  "index": 18,
+  "kind": "unsound",
+  "severity": "high",
+  "text": "The solution contradicts itself: calls Assertion false, derives I = I0 and calls it true, then keys D. Already raised via R034.",
+  "where": "solution",
+  "chapter": "Waves",
+  "subject": "Physics"
+ },
+ {
+  "questionId": "68c8153cfb6b2f16e2d3ceaf",
+  "index": 38,
+  "kind": "solution_missing",
+  "severity": "medium",
+  "text": "Solution is a three-word fragment ('conceptual Based of field force') with no reasoning for any of the four statements.",
+  "where": "solution",
+  "chapter": "Electrostatics",
+  "subject": "Physics"
+ },
+ {
+  "questionId": "68dea657387eea3d0d95f54a",
+  "index": 13,
+  "kind": "notation",
+  "severity": "medium",
+  "text": "Solution subscripts are garbled: 'P_eqcu' and 'P_eqch' appear where 'P_each' (power of each lens) was meant.",
+  "where": "solution",
+  "chapter": "Geometrical optics and optical instruments",
+  "subject": "Physics"
+ },
+ {
+  "questionId": "6062ec84518e9535e120c422",
+  "index": 27,
+  "kind": "notation",
+  "severity": "medium",
+  "text": "Solution units are corrupted: '1.9x10^-5 /AC' and '5.7x10^-5 /CC' where '/°C' was meant (degree sign lost).",
+  "where": "solution",
+  "chapter": "Temperature and thermal properties of matter",
+  "subject": "Physics"
+ },
+ {
+  "questionId": "68dea7c2387eea3d0d95f9bb",
+  "index": 41,
+  "kind": "solution_fix",
+  "severity": "medium",
+  "text": "Solution ends at '= 0.08 m' while the key is 8 (cm). Missing the final conversion caused R032. Suggest appending '= 8 cm'.",
+  "where": "solution",
+  "chapter": "Wave optics",
+  "subject": "Physics"
+ },
+ {
+  "questionId": "61ee6c9d90a1a968a168686b",
+  "index": 3,
+  "kind": "spelling",
+  "severity": "low",
+  "text": "Solution typos: 'prominant' (prominent), 'Maceus' (Mucous).",
+  "where": "solution",
+  "chapter": "Digestion and Absorption",
+  "subject": "Zoology"
+ },
+ {
+  "questionId": "620e23cecc50543bc7db9186",
+  "index": 11,
+  "kind": "spelling",
+  "severity": "low",
+  "text": "Solution typos: 'wheater' (whether), 'than' for 'then'.",
+  "where": "solution",
+  "chapter": "Evolution",
+  "subject": "Zoology"
+ },
+ {
+  "questionId": "622df25ab70e4b50e44ff837",
+  "index": 19,
+  "kind": "spelling",
+  "severity": "low",
+  "text": "Stem typo: 'hemispherial' (hemispherical).",
+  "where": "question",
+  "chapter": "Properties of matter and fluid mechanics",
+  "subject": "Physics"
+ },
+ {
+  "questionId": "6264197209f4fd65f58f5707",
+  "index": 25,
+  "kind": "spelling",
+  "severity": "low",
+  "text": "Option B reads 'Canolla' (Canola); the solution has run-together words ('riceis', 'producebeta-carotene').",
+  "where": "question",
+  "chapter": "Biotechnology and its Applications",
+  "subject": "Zoology"
+ },
+ {
+  "questionId": "617fa18efd53ff1629ed890f",
+  "index": 26,
+  "kind": "spelling",
+  "severity": "low",
+  "text": "Missing space: 'part of' and 'leaf' are glued ('ofleaf') by a stray span.",
+  "where": "question",
+  "chapter": "Morphology of Flowering Plants",
+  "subject": "Botany"
+ },
+ {
+  "questionId": "6956d7bb23cb221e570d6013",
+  "index": 40,
+  "kind": "noise",
+  "severity": "low",
+  "text": "Solution starts with the stray label 'Solution:' and '(b)'.",
+  "where": "solution",
+  "chapter": "Motion in a Plane",
+  "subject": "Physics"
+ },
+ {
+  "questionId": "68f21caf941cda588bc04365",
+  "index": 30,
+  "kind": "wrong_chapter",
+  "severity": "low",
+  "text": "Nuclei decay / mean life is filed under 'Mathematics in physics -> Linear function'; probably belongs to Nuclear physics and radioactivity.",
+  "where": "meta",
+  "chapter": "Mathematics in physics",
+  "subject": "Physics"
+ }
+]
