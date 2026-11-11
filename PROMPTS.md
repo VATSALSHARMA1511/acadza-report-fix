@@ -99,28 +99,14 @@ Smaller changes inside v2 that came from the data, each in the prompt text itsel
 - **SECURITY paragraph** came from R027 (a comment that tries to give orders). It is defence in depth only; the real defence is that `route` is computed by code, so even a fully fooled model cannot create an `auto_apply`.
 - **Reply rules** ("never promise marks, rank changes or timelines"; "mirror their language") came from reading R011/R019/R039 (Hinglish) and realising a promise like "your marks will be restored" is something the system cannot keep.
 
-## 2. Prompts I gave my AI coding assistant
 
-I am putting only what is real here. **The one prompt from this session, verbatim:**
-
-> `give me the best possible solution like the one which i can mail to respond with this mail which will sure shot my chance of selection`
-> (with the zip attached and the assignment email pasted; then: `if there's anything you need tell me dont waste credits`)
-
-> **[TO COMPLETE BEFORE SENDING: paste here, verbatim, the prompts from your earlier build sessions with Claude that I cannot see. Add anything you typed about design, the prompts that steered the console, and your own corrections. The brief weights this section heavily and a pasted real log beats any summary I could write. Delete this note.]**
-
-How that one prompt was directed in practice (this is what the assistant did, not something I am dressing up):
-1. Read the brief and **all 43 questions and 44 reports** before writing code, and solved every question independently (including the 4 with no report) rather than trusting the stored key.
-2. Decided the architecture from what the data forced, not from a template (section 4).
-3. Built the guards and their tests *before* the UI, so safety was not an afterthought.
-4. Looked at the console in a real headless browser instead of assuming it rendered (this caught two real bugs, below).
-
-## 3. Three moments the AI was wrong, and how it was caught
+## 2. Three moments the AI was wrong, and how it was caught
 
 1. **My text-flattening helper silently deleted square roots.** To read 43 questions quickly I converted MathML to plain text; the helper dropped `<msqrt>`. Result: I read Q9's option B as "2 : 3" instead of "2 : sqrt(3)", and I was about to log Q29's solution (`x = D(D-4f)`) as an *unreported notation defect*. Caught by pulling the raw HTML for every question I was about to edit. Q29's MathML had the sqrt all along. Without that, I would have filed a false defect against a correct question. Fixed the helper and added `sqrt(...)`.
 2. **The stored solutions are not ground truth.** Q18's solution calls the Assertion false, derives `I = I0`, calls it true, then keys D. Q10's solution says insulin and glucagon act "synergistically". Q35's ends at `a = 40 cm` against a key of 20. A system that "checks the key against the solution" blesses all three bad states. The blind solver found that Q18 is not a wrong-key case at all: Assertion *and* Reason are both false and no option covers that, so the repair is `unsound`, not `answer_key`, and the student who said "A is true" is *also* wrong. Caught because the independent solve disagreed with both the key and the solution.
 3. **My own lint missed the blank option on Q9.** The option parser's regex consumed the newline that the next `(D)` needed as a prefix, so `(C)` + blank + `(D)` parsed as one option. Caught by the test I wrote for it (`test_lint_finds_planted_defects`), not by eye. Related, same session: the console's toast had the `hidden` attribute but `display:flex` in CSS overrode it, so a black pill floated over every page. Caught only by taking a screenshot.
 
-## 4. Design decisions log
+## 3. Design decisions log
 
 **Architecture: LLM proposes, code disposes.**
 - The model can output any verdict, repair or edit. Only `guards.decide_route()` can produce `auto_apply`, and it can only *remove* autonomy. It checks: repair is in the closed taxonomy; every edit's field is in that repair's `fields`; `auto: false` repairs may carry no edit at all; the `find` string exists **exactly once**; per-repair semantics (a `spelling` edit may not change a digit or markup; `exam_reference` may only delete a tag; `answer_form`/`stem_data` must be additive and any number added must already appear in the stored solution; `option_repair` may not change the stem; a new solution must contain the keyed value; `answer_key` requires an independent solve that agrees and is confident); confidence >= 0.85; no abuse flag; and "derivable from the record" for anything that adds content.
